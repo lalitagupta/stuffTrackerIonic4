@@ -7,115 +7,77 @@
 </ion-header>
 
 <ion-content>
-  <form #f="ngForm" (ngSubmit)="onStuff(f)">
     
     <!-- <div class="ion-padding">
     The world is your oyster.
     <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
   </div> -->
-    <ion-card>
-      <!-- #1 Milk -->
-      <ion-grid>
-        <ion-row>
-          <ion-item (click)="getStuff('milk')" class="activated">
-            <ion-icon name="beaker" slot="start"></ion-icon>
-            <ion-label>Milk</ion-label>
-          </ion-item>
-        </ion-row>
-        <ion-row>
+  <form #form="ngForm" (ngSubmit)="dailyStuffForm(form)" novalidate>
+    <!-- <ion-item>
+      <ion-label>Todo</ion-label>
+      <ion-input type="text" required name="title" [(ngModel)]="title" ></ion-input>
+    </ion-item>
 
-          <ion-radio-group>
-            <div *ngIf="stuffData == 'milk'">
-              <ion-col>
-                <ion-label>Yes</ion-label>
-                <ion-radio value="yes"></ion-radio>
-              </ion-col>
-              <ion-col>
-                <ion-label>No</ion-label>
-                <ion-radio value="no"></ion-radio>
-              </ion-col>
-            </div>
-          </ion-radio-group>
-        </ion-row>
-      </ion-grid>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea [(ngModel)]="description" name="description" ngControl="description"></ion-textarea>
+    </ion-item> -->
 
-      <!-- #2 Newspaper -->
-      <ion-grid>
-        <ion-row>
-          <ion-item (click)="getStuff('newspaper')" class="activated">
-            <ion-icon name="book" slot="start"></ion-icon>
-            <ion-label>Newspaper</ion-label>
-          </ion-item>
-        </ion-row>
-        <ion-row>
+    <!-- <ion-item (click)="onStuff('milk')" class="activated">
+      <ion-icon name="beaker" slot="start"></ion-icon>
+      <ion-label>Milk</ion-label>
+    </ion-item>
+    <ion-radio-group>
+      <div *ngIf="stuffData == 'milk'">
+        <ion-col>
+          <ion-label>Yes</ion-label>
+          <ion-radio value="yes" name="yes"></ion-radio>
+        </ion-col>
+        <ion-col>
+          <ion-label>No</ion-label>
+          <ion-radio value="no" name="no"></ion-radio>
+        </ion-col>
+      </div>
+    </ion-radio-group> -->
 
-          <ion-radio-group>
-            <div *ngIf="stuffData == 'newspaper'">
-              <ion-col>
-                <ion-label>Yes</ion-label>
-                <ion-radio value="yes"></ion-radio>
-              </ion-col>
-              <ion-col>
-                <ion-label>No</ion-label>
-                <ion-radio value="no"></ion-radio>
-              </ion-col>
-            </div>
-          </ion-radio-group>
-        </ion-row>
-      </ion-grid>
+    <ion-item>
+      <ion-icon name="beaker" slot="start"></ion-icon>
+      <ion-label>Milk</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="milk" name="milk">
+        <ion-select-option value="milkYes">Yes</ion-select-option>
+        <ion-select-option value="milkNo">No</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-      <!-- #3 Maid -->
-      <ion-grid>
-        <ion-row>
-          <ion-item (click)="getStuff('maid')" class="activated">
-            <ion-icon name="woman" slot="start"></ion-icon>
-            <ion-label>Maid</ion-label>
-          </ion-item>
-        </ion-row>
-        <ion-row>
-
-          <ion-radio-group>
-            <div *ngIf="stuffData == 'maid'">
-              <ion-col>
-                <ion-label>Yes</ion-label>
-                <ion-radio value="yes"></ion-radio>
-              </ion-col>
-              <ion-col>
-                <ion-label>No</ion-label>
-                <ion-radio value="no"></ion-radio>
-              </ion-col>
-            </div>
-          </ion-radio-group>
-        </ion-row>
-      </ion-grid>
-
-      <!-- #4 School bus -->
-      <ion-grid>
-        <ion-row>
-          <ion-item (click)="getStuff('schoolbus')" class="activated">
-            <ion-icon name="bus" slot="start"></ion-icon>
-            <ion-label>School bus</ion-label>
-          </ion-item>
-        </ion-row>
-        <ion-row>
-
-          <ion-radio-group>
-            <div *ngIf="stuffData == 'schoolbus'">
-              <ion-col>
-                <ion-label>Yes</ion-label>
-                <ion-radio value="yes"></ion-radio>
-              </ion-col>
-              <ion-col>
-                <ion-label>No</ion-label>
-                <ion-radio value="no"></ion-radio>
-              </ion-col>
-            </div>
-          </ion-radio-group>
-        </ion-row>
-      </ion-grid>
-      <button ion-button block type="click" clear>Submit</button>
-    </ion-card>
+    <ion-item>
+      <ion-icon name="book" slot="start"></ion-icon>
+      <ion-label>Newspaper</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="newspaper" name="newspaper">
+        <ion-select-option value="newsYes">Yes</ion-select-option>
+        <ion-select-option value="newsNo">No</ion-select-option>
+      </ion-select>
+    </ion-item>
     
+    <ion-item>
+      <ion-icon name="woman" slot="start"></ion-icon>
+      <ion-label>Maid</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="maid" name="maid">
+        <ion-select-option value="maidYes">Yes</ion-select-option>
+        <ion-select-option value="maidNo">No</ion-select-option>
+      </ion-select>
+    </ion-item>
 
+    <ion-item>
+      <ion-icon name="bus" slot="start"></ion-icon>
+      <ion-label>School bus</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="bus" name="bus">
+        <ion-select-option value="busYes">Yes</ion-select-option>
+        <ion-select-option value="busNo">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    
+    <ion-button expand="block" type="submit" color="green" fill="clear">Submit your stuff</ion-button>
   </form>
+  
 </ion-content>
